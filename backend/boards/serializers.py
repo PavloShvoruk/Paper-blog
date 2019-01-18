@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Board
+from .models import Board, Article
 
 
 class BoardSerializer(serializers.ModelSerializer):
@@ -8,3 +8,11 @@ class BoardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Board
         fields = ("name", "description")
+
+
+class ArticleSerializer(serializers.ModelSerializer):
+    """Article serialization"""
+    class Meta:
+        model = Article
+        fields = ("title", "article_text",
+                  "published_at", "board", "author")

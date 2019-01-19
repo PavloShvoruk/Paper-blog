@@ -10,11 +10,11 @@ pylint = "*"
 django = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
-djangorestframework-jwt = "*"
 python-decouple = "*"
 dj-database-url = "*"
 djangorestframework-jsonapi = "*"
 djoser = "*"
+djangorestframework-simplejwt = "*"
 
 [requires]
 python_version = "3.7"

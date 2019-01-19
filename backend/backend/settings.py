@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'boards',
     'rest_framework.authtoken',
     'corsheaders',
+    'djoser',
 ]
 
 MIDDLEWARE = [

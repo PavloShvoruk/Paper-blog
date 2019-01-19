@@ -21,6 +21,7 @@ class BoardSerializer(serializers.ModelSerializer):
 class ArticleSerializer(serializers.ModelSerializer):
     """Article serialization"""
     author = UserSerializer()
+    board = BoardSerializer()
 
     class Meta:
         model = Article
@@ -35,3 +36,10 @@ class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = ("message", "created_at", "article", "created_by")
+
+
+class CommentPostSerializer(serializers.ModelSerializer):
+    """Comment posting serialization"""
+    class Meta:
+        model = Comment
+        fields = ("message", "article")

@@ -11,6 +11,9 @@ class Board(models.Model):
         verbose_name = "Category"
         verbose_name_plural = "Categories"
 
+    def __str__(self):
+        return self.name
+
 
 class Article(models.Model):
     title = models.CharField(max_length=255)
@@ -25,6 +28,9 @@ class Article(models.Model):
         verbose_name = "Article"
         verbose_name_plural = "Articles"
 
+    def __str__(self):
+        return self.title
+
 
 class Comment(models.Model):
     message = models.TextField(max_length=500)
@@ -37,3 +43,6 @@ class Comment(models.Model):
     class Meta:
         verbose_name = "Article comment"
         verbose_name_plural = "Article comments"
+
+    def __str__(self):
+        return self.message

@@ -9,7 +9,7 @@ from .serializers import (
 
 
 class BoardView(APIView):
-    permission_classes = [permissions.AllowAny, ]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]
 
     def get(self, request):
         board_set = Board.objects.all()
@@ -18,7 +18,7 @@ class BoardView(APIView):
 
 
 class ArticleView(APIView):
-    permission_classes = [permissions.AllowAny, ]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]
 
     def get(self, request):
         board = request.GET.get("board")

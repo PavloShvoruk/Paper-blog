@@ -1,7 +1,9 @@
 <template>
   <div class="row">
-    <div class="sm-12 md-8 col">Hello</div>
-    <aside class="sm-12 md-4 col sidebar">
+    <div class="sm-6 md-8 lg-10 col">Hello</div>
+    <aside class="paper sm-6 md-4 lg-2 col">
+      <h3>Categories</h3>
+      <input type="search" class="form-control" placeholder="e.g. filter" role="searchbox">
       <categoriesList :categories="categories"/>
     </aside>
   </div>

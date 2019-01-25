@@ -1,11 +1,19 @@
 <template>
   <div id="app">
-    <router-view/>
+    <navigation/>
+    <div class="wrapper">
+      <router-view/>
+    </div>
   </div>
 </template>
 
 <script>
+import Navigation from "./components/navigation";
+
 export default {
+  components: {
+    Navigation
+  },
   name: "App"
 };
 </script>
@@ -13,6 +21,10 @@ export default {
 <style>
 #app {
   margin: 0;
-  padding: 0;
+}
+
+.wrapper {
+  margin-top: 5rem;
+  min-height: calc(100vh - 5rem);
 }
 </style>

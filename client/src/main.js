@@ -5,8 +5,11 @@ import App from './App'
 import {
   store
 } from './store'
+import axios from 'axios'
 import router from './router'
 import './assets/paper.min.css'
+
+axios.defaults.baseURL = 'http://127.0.0.1:8000/api/'
 
 Vue.config.productionTip = false
 

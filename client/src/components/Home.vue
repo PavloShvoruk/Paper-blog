@@ -1,27 +1,30 @@
 <template>
-  <div>
-    <ul v-for="(category, index) in categoryList" :key="index">
-      <li>{{ category.name }}</li>
-    </ul>
+  <div class="row">
+    <div class="sm-12 md-8 col">Hello</div>
+    <aside class="sm-12 md-4 col sidebar">
+      <categoriesList :categories="categories"/>
+    </aside>
   </div>
 </template>
 
 <script>
-// import ApiService from "../ApiService.js";
-import { store } from "vuex";
-
+import ApiService from "../ApiService.js";
+import categoriesList from "../components/categoriesList/List";
 export default {
-  name: "home",
-  mounted() {
-    try {
-      this.$store.dispatch("GET_CATEGORIES");
-    } catch (error) {
-      console.log(error.message);
-    }
+  components: {
+    categoriesList
   },
-  computed: {
-    categoryList() {
-      return this.$store.getters.CATEGORIES;
+  name: "home",
+  data() {
+    return {
+      categories: []
+    };
+  },
+  async mounted() {
+    try {
+      this.categories = await ApiService.getCategories();
+    } catch (error) {
+      console.log(error);
     }
   }
 };

@@ -21,8 +21,9 @@ class ArticleView(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]
 
     def get(self, request):
-        board = request.GET.get("board")
-        article_set = Article.objects.filter(board=board)
+        # board = request.GET.get("board")
+        # article_set = Article.objects.filter(board=board)
+        article_set = Article.objects.all()
         article_serializer = ArticleSerializer(article_set, many=True)
         return Response({"data": article_serializer.data})
 

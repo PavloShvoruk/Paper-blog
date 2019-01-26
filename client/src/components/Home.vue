@@ -1,32 +1,51 @@
 <template>
   <div class="row">
-    <div class="sm-6 md-8 lg-10 col">Hello</div>
-    <aside class="paper sm-6 md-4 lg-2 col">
-      <h3>Categories</h3>
-      <input type="search" class="form-control" placeholder="e.g. filter" role="searchbox">
-      <categoriesList :categories="categories"/>
+    <aside class="sm-12 md-3 col sidebar">
+      <div class="paper">
+        <h3>Categories</h3>
+        <input type="search" class="form-control" placeholder="e.g. filter" role="searchbox">
+        <categoriesList :categories="categories"/>
+      </div>
     </aside>
+    <div class="sm-12 md-8 col">
+      <articleList :articles="articles"/>
+    </div>
   </div>
 </template>
+
+<style scoped>
+.paper {
+  width: auto;
+  text-align: center;
+}
+
+.form-control {
+  width: 100%;
+}
+</style>
 
 <script>
 import ApiService from "../ApiService.js";
 import categoriesList from "../components/categoriesList/List";
+import articleList from "../components/articlesList/List";
 export default {
   components: {
-    categoriesList
+    categoriesList,
+    articleList
   },
   name: "home",
   data() {
     return {
-      categories: []
+      categories: [],
+      articles: []
     };
   },
   async mounted() {
     try {
       this.categories = await ApiService.getCategories();
+      this.articles = await ApiService.getArticles();
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   }
 };

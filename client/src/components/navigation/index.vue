@@ -2,7 +2,7 @@
   <nav class="border fixed split-nav">
     <div class="nav-brand">
       <h3>
-        <a href="#">Paper Blog</a>
+        <router-link to="/">Paper Blog</router-link>
       </h3>
     </div>
     <div class="collapsible">
@@ -20,10 +20,7 @@
             <a href="#">My Articles</a>
           </li>
           <li>
-            <a href="#">Register</a>
-          </li>
-          <li>
-            <a href="#">Login</a>
+            <router-link to="/login">Login</router-link>
           </li>
         </ul>
       </div>

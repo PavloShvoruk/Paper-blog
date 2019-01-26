@@ -1,6 +1,6 @@
 <template>
   <div class="title">
-    <h5>{{ name }}</h5>
+    <h4>{{ name }}</h4>
   </div>
 </template>
 <style scoped>

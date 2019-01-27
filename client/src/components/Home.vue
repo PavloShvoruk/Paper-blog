@@ -14,6 +14,9 @@
 </template>
 
 <style scoped>
+.row {
+  margin-top: 5rem;
+}
 .paper {
   width: auto;
   text-align: center;

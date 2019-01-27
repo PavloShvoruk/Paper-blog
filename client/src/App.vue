@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <navigation/>
-    <div class="wrapper">
-      <router-view/>
-    </div>
+    <!-- <div class="wrapper"> -->
+    <router-view/>
+    <!-- </div> -->
   </div>
 </template>
 
@@ -21,10 +21,5 @@ export default {
 <style>
 #app {
   margin: 0;
-}
-
-.wrapper {
-  margin-top: 5rem;
-  min-height: calc(100vh - 5rem);
 }
 </style>

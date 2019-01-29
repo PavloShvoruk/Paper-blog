@@ -3,7 +3,7 @@ import {
   USER_ERROR,
   USER_SUCCESS
 } from '../actions/user'
-import ApiService from "../ApiService.js"
+import ApiService from '../../ApiService'
 import Vue from 'vue'
 import {
   AUTH_LOGOUT
@@ -24,11 +24,11 @@ const actions = {
     dispatch
   }) => {
     commit(USER_REQUEST)
-    ApiService.getUser()
+    ApiService.getUser(user)
       .then(resp => {
         commit(USER_SUCCESS, resp)
       })
-      .catch(resp => {
+      .catch(err => {
         commit(USER_ERROR)
         // if resp is unauthorized, logout, to
         dispatch(AUTH_LOGOUT)

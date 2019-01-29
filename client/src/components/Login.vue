@@ -1,17 +1,18 @@
 <template>
   <div class="row">
-    <form class="paper">
+    <form @submit.prevent="formSubmitted = true" class="paper">
       <div class="form-group">
         <h3>Login</h3>
       </div>
       <div class="form-group">
-        <input type="text" placeholder="Username">
+        <input v-model="username" type="text" placeholder="Username">
       </div>
       <div class="form-group">
-        <input type="password" placeholder="Password">
+        <input v-model="password" type="password" placeholder="Password">
       </div>
       <div class="form-group">
-        <button class="btn-block">Login</button>
+        <button class="btn-block" @click="login">Login</button>
+        <button class="btn-block" @click="onClick">Facebook</button>
       </div>
       <div class="form-group">
         <p class="text-muted">Not registered?
@@ -40,7 +41,34 @@
 </style>
 
 <script>
+import { AUTH_REQUEST } from "../store/actions/auth.js";
+import ApiService from "../ApiService.js";
+import axios from "axios";
+import qs from "qs";
 export default {
-  name: "login"
+  name: "login",
+  data() {
+    return {
+      username: "",
+      password: ""
+    };
+  },
+  methods: {
+    async onClick() {
+      try {
+        ApiService.getUser().then(resp => {
+          console.log(resp);
+        });
+      } catch (error) {
+        console.log(error.message);
+      }
+    },
+    login() {
+      const { username, password } = this;
+      this.$store.dispatch(AUTH_REQUEST, { username, password }).then(() => {
+        this.$router.push("/");
+      });
+    }
+  }
 };
 </script>

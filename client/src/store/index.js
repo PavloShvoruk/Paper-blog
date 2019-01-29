@@ -1,12 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import categories from './modules/categories'
+import user from './modules/user'
+import auth from './modules/auth'
 
 Vue.use(Vuex)
 
 export const store = new Vuex.Store({
   modules: {
-    categories
+    user,
+    auth,
   },
   strict: process.env.NODE_ENV !== 'production'
 })

@@ -4,7 +4,9 @@ class ApiService {
   static getCategories() {
     return new Promise(async (resolve, reject) => {
       try {
-        const res = await axios.get("categories/");
+        const res = await axios.get("categories/", {
+          useCache: true
+        });
         const data = res.data.data.data;
         resolve(data);
       } catch (error) {
@@ -15,7 +17,9 @@ class ApiService {
   static getArticles() {
     return new Promise(async (resolve, reject) => {
       try {
-        const res = await axios.get("articles/");
+        const res = await axios.get("articles/", {
+          useCache: true
+        });
         const data = res.data.data.data;
         resolve(data);
       } catch (error) {
@@ -24,14 +28,16 @@ class ApiService {
     });
   }
 
-  static createToken({ username, password }) {
+  static createToken({
+    username,
+    password
+  }) {
     return axios.post(
       "auth/token/create/",
       qs.stringify({
         username,
         password
-      }),
-      {
+      }), {
         "content-type": "application/x-www-form-urlencoded"
       }
     );

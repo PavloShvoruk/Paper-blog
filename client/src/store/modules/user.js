@@ -11,11 +11,11 @@ import {
 
 const state = {
   status: '',
-  profile: {}
+  profile: ''
 }
 const getters = {
   getProfile: state => state.profile,
-  isProfileLoaded: state => !!state.profile.username,
+  isProfileLoaded: state => !!state.profile
 }
 
 const actions = {
@@ -24,7 +24,7 @@ const actions = {
     dispatch
   }) => {
     commit(USER_REQUEST)
-    ApiService.getUser(user)
+    ApiService.getUser()
       .then(resp => {
         commit(USER_SUCCESS, resp)
       })
@@ -48,7 +48,7 @@ const mutations = {
     state.status = 'error'
   },
   [AUTH_LOGOUT]: (state) => {
-    state.profile = {}
+    state.profile = ''
   }
 }
 

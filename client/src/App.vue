@@ -9,12 +9,18 @@
 
 <script>
 import Navigation from "./components/navigation";
+import { USER_REQUEST } from "./store/actions/user.js";
 
 export default {
   components: {
     Navigation
   },
-  name: "App"
+  name: "App",
+  created() {
+    if (this.$store.getters.isAuthenticated) {
+      this.$store.dispatch(USER_REQUEST);
+    }
+  }
 };
 </script>
 

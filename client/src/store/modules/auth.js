@@ -33,7 +33,7 @@ const actions = {
           localStorage.setItem('user-token', `Token ${resp.data.data.id}`)
           axios.defaults.headers.common['Authorization'] = `Token ${resp.data.data.id}`
           commit(AUTH_SUCCESS, resp)
-          // dispatch(USER_REQUEST)
+          dispatch(USER_REQUEST)
           resolve(resp)
         })
         .catch(err => {

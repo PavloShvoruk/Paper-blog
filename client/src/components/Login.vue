@@ -43,8 +43,7 @@
 <script>
 import { AUTH_REQUEST } from "../store/actions/auth.js";
 import ApiService from "../ApiService.js";
-import axios from "axios";
-import qs from "qs";
+
 export default {
   name: "login",
   data() {

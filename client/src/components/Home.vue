@@ -7,7 +7,7 @@
         <categoriesList :categories="categories"/>
       </div>
     </aside>
-    <div class="sm-12 md-8 col">
+    <div class="sm-12 md-5 col">
       <articleList :articles="articles"/>
     </div>
   </div>

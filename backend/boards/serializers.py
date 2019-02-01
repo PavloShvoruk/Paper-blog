@@ -1,3 +1,4 @@
+# from datetime import datetime
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from .models import Board, Article, Comment
@@ -22,10 +23,12 @@ class ArticleSerializer(serializers.ModelSerializer):
     """Article serialization"""
     author = UserSerializer()
     board = BoardSerializer()
+    published_at = serializers.DateTimeField(
+        format="%d.%m.%Y, %H:%M:%S", required=False, read_only=True)
 
     class Meta:
         model = Article
-        fields = ("title", "article_text",
+        fields = ("id", "title", "article_text",
                   "published_at", "board", "author")
 
 

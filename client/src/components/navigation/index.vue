@@ -31,6 +31,13 @@
   </nav>
 </template>
 
+<style scoped>
+nav {
+  margin-top: 2px;
+}
+</style>
+
+
 <script>
 import { mapGetters, mapState } from "vuex";
 import { AUTH_LOGOUT } from "../../store/actions/auth.js";

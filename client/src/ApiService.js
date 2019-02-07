@@ -14,6 +14,7 @@ class ApiService {
       }
     });
   }
+
   static getArticles() {
     return new Promise(async (resolve, reject) => {
       try {
@@ -26,6 +27,20 @@ class ApiService {
         reject(error);
       }
     });
+  }
+
+  static getArticle(id) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const res = await axios.get(`articles/${id}`, {
+          useCache: true
+        });
+        const data = res.data.data.article;
+        resolve(data);
+      } catch (error) {
+        reject(error);
+      }
+    })
   }
 
   static createToken({

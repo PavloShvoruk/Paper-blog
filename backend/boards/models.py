@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 
 class Board(models.Model):
     name = models.CharField(max_length=30, unique=True)
-    description = models.CharField(max_length=100)
 
     class Meta:
         verbose_name = "Category"
@@ -17,7 +16,7 @@ class Board(models.Model):
 
 class Article(models.Model):
     title = models.CharField(max_length=255)
-    article_text = models.CharField(max_length=4000)
+    article_text = models.TextField()
     published_at = models.DateTimeField(auto_now_add=True)
     board = models.ForeignKey(
         Board, verbose_name="Category", on_delete=models.CASCADE)

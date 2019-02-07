@@ -1,4 +1,3 @@
-# from datetime import datetime
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from .models import Board, Article, Comment
@@ -16,7 +15,7 @@ class BoardSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Board
-        fields = ("name", "description")
+        fields = ("__all__")
 
 
 class ArticleSerializer(serializers.ModelSerializer):

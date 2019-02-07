@@ -6,9 +6,6 @@ from .models import Board, Article, Comment
 from .serializers import (
     BoardSerializer, ArticleSerializer, CommentSerializer, CommentPostSerializer)
 
-# from django.http import Http404
-# Create your views here.
-
 
 class BoardView(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]

@@ -2,6 +2,7 @@
   <div>
     <div v-for="(article, index) in articles" :key="index">
       <articleItem
+        :id="article.id"
         :title="article.title"
         :publishedAt="article.published_at"
         :author="article.author"

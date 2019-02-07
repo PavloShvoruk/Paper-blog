@@ -4,7 +4,9 @@
       <h3 class="card-title">{{ title }}</h3>
       <h5 class="card-subtitle">Posted on {{ publishedAt }}</h5>
       <h5 class="card-subtitle">Author: {{ author.username }}</h5>
-      <button>Let me go here!</button>
+      <button>
+        <router-link :to="{ name: 'article', params: { articleID: id }}">Let me go here!</router-link>
+      </button>
     </div>
   </div>
 </template>
@@ -17,6 +19,9 @@
 <script>
 export default {
   name: "Article-item",
-  props: ["title", "publishedAt", "author", "category"]
+  props: ["id", "title", "publishedAt", "author", "category"],
+  data() {
+    return {};
+  }
 };
 </script>

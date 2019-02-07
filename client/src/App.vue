@@ -1,11 +1,13 @@
 <template>
   <div id="app">
     <navigation/>
-    <!-- <div class="wrapper"> -->
     <router-view/>
-    <!-- </div> -->
   </div>
 </template>
+
+<style scoped>
+</style>
+
 
 <script>
 import Navigation from "./components/navigation";

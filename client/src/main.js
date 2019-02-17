@@ -31,7 +31,8 @@ axios.interceptors.request.use(function (config) {
   //do smth before request sent
   NProgress.start();
   return config;
-}, function (error) {
+}, error => {
+  NProgress.done();
   console.log(error);
   return Promise.reject(error);
 });
@@ -42,6 +43,7 @@ axios.interceptors.response.use(function (response) {
   return response;
 }, function (error) {
   // Do something with response error
+  NProgress.done();
   return Promise.reject(error);
 });
 

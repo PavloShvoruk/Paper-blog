@@ -28,19 +28,21 @@ const actions = {
   }, user) => {
     return new Promise(async (resolve, reject) => {
       commit(AUTH_REQUEST)
-      await ApiService.createToken(user)
-        .then(resp => {
-          localStorage.setItem('user-token', `Token ${resp.data.data.id}`)
-          axios.defaults.headers.common['Authorization'] = `Token ${resp.data.data.id}`
-          commit(AUTH_SUCCESS, resp)
-          dispatch(USER_REQUEST)
-          resolve(resp)
-        })
-        .catch(err => {
-          commit(AUTH_ERROR, err)
-          localStorage.removeItem('user-token')
-          reject(err)
-        })
+      try {
+        await ApiService.createToken(user)
+          .then(resp => {
+            localStorage.setItem('user-token', `Token ${resp.data.data.id}`)
+            axios.defaults.headers.common['Authorization'] = `Token ${resp.data.data.id}`
+            commit(AUTH_SUCCESS, resp)
+            dispatch(USER_REQUEST)
+            resolve(resp)
+          })
+      } catch (error) {
+        commit(AUTH_ERROR, error.response.status)
+        localStorage.removeItem('user-token')
+        reject(error)
+      }
+
     })
   },
   [AUTH_LOGOUT]: ({
@@ -64,8 +66,8 @@ const mutations = {
     state.token = resp.data.data.id
     state.hasLoadedOnce = true
   },
-  [AUTH_ERROR]: (state) => {
-    state.status = 'error'
+  [AUTH_ERROR]: (state, resp) => {
+    state.status = resp
     state.hasLoadedOnce = true
   },
   [AUTH_LOGOUT]: (state) => {

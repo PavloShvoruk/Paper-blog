@@ -55,7 +55,7 @@ class ApiService {
       }), {
         "content-type": "application/x-www-form-urlencoded"
       }
-    );
+    )
   }
 
   static getUser() {

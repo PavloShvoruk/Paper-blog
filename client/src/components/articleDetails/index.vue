@@ -1,16 +1,24 @@
 <template>
-  <div class="card" style="width: 20rem;">
-    <div class="card-header">{{$route.params.articleID }}</div>
-    <div class="card-body">
-      <h4 class="card-title">{{article.title}}</h4>
-      <p class="card-text">{{ article.article_text }}</p>
-    </div>
-    <div class="card-footer">Footer</div>
+  <div class="sm-6 md-8 lg-10 row flex-center paper">
+    <article class="article">
+      <h1 class="article-title">{{article.title}}</h1>
+      <p class="article-meta">
+        Written by
+        <a href="#">Super User</a>
+      </p>
+      <p class="article-text">{{ article.article_text }}</p>
+      <div class="row">
+        <button>5 Comments</button>
+      </div>
+    </article>
   </div>
 </template>
 <style scoped>
-.card {
+.paper {
   margin-top: 5rem;
+}
+.paper p {
+  text-indent: 1rem;
 }
 </style>
 

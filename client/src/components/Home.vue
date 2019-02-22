@@ -3,7 +3,14 @@
     <aside class="sm-12 md-3 col sidebar">
       <div class="paper">
         <h3>Categories</h3>
-        <input type="search" class="form-control" placeholder="e.g. filter" role="searchbox">
+        <input
+          type="search"
+          v-model="searchField"
+          v-on:keyup.enter="articleFilter"
+          class="form-control"
+          placeholder="e.g. filter"
+          role="searchbox"
+        >
         <categoriesList :categories="categories"/>
       </div>
     </aside>
@@ -40,7 +47,8 @@ export default {
   data() {
     return {
       categories: [],
-      articles: []
+      articles: [],
+      searchField: ""
     };
   },
   async mounted() {
@@ -49,6 +57,17 @@ export default {
       this.articles = await ApiService.getArticles();
     } catch (error) {
       console.log(error.message);
+    }
+  },
+  methods: {
+    articleFilter() {
+      //TODO: filter array
+      console.log(this.articles);
+      this.articles = this.articles.filter(article => {
+        return article.title
+          .toLowerCase()
+          .includes(this.searchField.toLowerCase());
+      });
     }
   }
 };

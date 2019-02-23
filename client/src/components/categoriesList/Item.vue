@@ -1,17 +1,22 @@
 <template>
   <div class="title">
-    <h4>{{ name }}</h4>
+    <h4>
+      <a>{{ categoryName }}</a>
+    </h4>
   </div>
 </template>
 <style scoped>
-.title {
+a {
   cursor: pointer;
 }
 </style>
 
+
 <script>
 export default {
   name: "category-item",
-  props: ["name"]
+  props: {
+    categoryName: String
+  }
 };
 </script>

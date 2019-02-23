@@ -8,14 +8,14 @@
           v-model="searchField"
           v-on:keyup.enter="articleFilter"
           class="form-control"
-          placeholder="e.g. filter"
+          placeholder="e.g. search"
           role="searchbox"
         >
-        <categoriesList :categories="categories"/>
+        <categoriesList :categories="categories" :categoryByList="clickName"/>
       </div>
     </aside>
     <div class="sm-12 md-5 col">
-      <articleList :articles="articles"/>
+      <articleList :articles="articleFilter"/>
     </div>
   </div>
 </template>
@@ -60,19 +60,21 @@ export default {
     }
   },
   methods: {
+    clickName(category) {
+      console.log(category);
+    }
+  },
+  computed: {
     articleFilter() {
-      //TODO: filter array
-      console.log(this.articles);
-      this.articles = this.articles.filter(article => {
-        return article.title
-          .toLowerCase()
-          .includes(this.searchField.toLowerCase());
+      const search = this.searchField.toLowerCase().trim();
+
+      if (!search) return this.articles;
+
+      return this.articles.filter(article => {
+        return article.title.toLowerCase().includes(search);
       });
     }
   }
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-</style>

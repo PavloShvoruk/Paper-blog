@@ -17,6 +17,11 @@
     <div class="sm-12 md-5 col">
       <articleList :articles="articleFilter"/>
     </div>
+    <aside class="sm-12 md-3 col sidebar">
+      <div class="paper">
+        <h3>Recent posts</h3>
+      </div>
+    </aside>
   </div>
 </template>
 

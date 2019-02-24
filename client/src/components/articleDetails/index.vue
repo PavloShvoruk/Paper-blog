@@ -35,7 +35,6 @@ export default {
   async mounted() {
     try {
       this.article = await ApiService.getArticle(this.$route.params.articleID);
-      console.log(this.article);
     } catch (error) {
       console.log(error.message);
     }

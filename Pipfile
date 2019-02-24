@@ -15,6 +15,7 @@ dj-database-url = "*"
 djangorestframework-jsonapi = "*"
 djoser = "*"
 djangorestframework-simplejwt = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.7"

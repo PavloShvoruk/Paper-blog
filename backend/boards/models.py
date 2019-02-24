@@ -3,6 +3,12 @@ from django.contrib.auth.models import User
 #from djoser.urls.base import User
 
 
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    avatar = models.ImageField(
+        upload_to='avatars/', max_length=255, null=True, blank=True)
+
+
 class Board(models.Model):
     name = models.CharField(max_length=30, unique=True)
 
